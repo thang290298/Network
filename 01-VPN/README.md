@@ -1,5 +1,4 @@
 # Overview VPN ( Virtual Private Network )
-
 ## I. Mạng riêng ảo VPN là gì?
 - `VPN` (Virtual Private Network) hay còn gọi là mạng ảo nội bộ. VPN là công nghệ mạng giúp tạo ra các kết nối mạng an toàn khi tham gia sử dụng dịch vụ của các nhà cung cấp dịch vụ mạng công cộng như internet, intranet
 - Đối với mỗi hệ thống có thể mạng ảo có thể kêt nối đến nhiều site khác nhau dựa trên diện tich địa lý, khu vực. Ta thường thấy các cơ quan, tổ chức chính phủ cho phép người dùng kết nối an toàn đến mạng nội bộ của chính phủ hay các cơ quan tổ chức, đó là nhờ có `VPN` (Virtual Private Network)
