@@ -1,6 +1,6 @@
 # Cài đặt Pfsense cơ bản
 
-## I. Chuẩn bị
+## Phần I. Chuẩn bị
 
 ### 1. Tài file iso của pfsense [tại đây](https://www.pfsense.org/download/)
 
@@ -14,7 +14,7 @@
   - Disk: 20 GB
   - Chuẩn bị 2 Card mạng: 1 LAN có IP: 172.16.4.29 và 1 WAN có IP: 10.10.13.29
 
-## II. Install Pfsense
+## Phần II. Install Pfsense
 
 <img src="../../../Images/Pfsense/Lab/2.png">
 
@@ -82,7 +82,7 @@ Bỏ qua bước cấu hình cho vtnet1
 
 <img src="../../../Images/Pfsense/Lab/18.png">
 
-## IV. Configuare Pfsense qua Giao diện
+## Phần IV. Configuare Pfsense qua Giao diện
 <img src="../../../Images/Pfsense/Lab/19.png">
 
 ### 1. Thiết lập cơ bản ban đầu
