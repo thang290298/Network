@@ -171,4 +171,4 @@ Bỏ qua bước cấu hình cho vtnet1
 
 <img src="../../../Images/Pfsense/Lab/42.png">
 
-### --- Hoàn thành Setup PfSense ---
+### <p align="center">*--- Hoàn thành Setup PfSense ---*</p>
