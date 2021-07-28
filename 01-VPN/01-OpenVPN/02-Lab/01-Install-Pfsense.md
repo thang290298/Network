@@ -83,9 +83,9 @@ Bỏ qua bước cấu hình cho vtnet1
 <img src="../../../Images/Pfsense/Lab/18.png">
 
 ## IV. Configuare Pfsense qua Giao diện
-
 <img src="../../../Images/Pfsense/Lab/19.png">
 
+### 1. Thiết lập cơ bản ban đầu
 <img src="../../../Images/Pfsense/Lab/20.png">
 
 - Thiết lập DNS Google:
@@ -96,15 +96,79 @@ Bỏ qua bước cấu hình cho vtnet1
 
 <img src="../../../Images/Pfsense/Lab/22.png">
 
-- Bấm `Next` ở phần Configure WAN Interface do đã cấu hình đặt IP ở [Bước 3 Phần II]()
+- Kéo màn hình xuống cuối rồi bấm `Next` ở phần Configure WAN Interface do đã cấu hình đặt IP ở [Bước 3 Phần II](https://github.com/thang290298/Network/blob/main/01-VPN/01-OpenVPN/02-Lab/01-Install-Pfsense.md#b%C6%B0%E1%BB%9Bc-3-%C4%91%E1%BA%B7t-c%E1%BA%A5u-h%C3%ACnh-ip-t%C4%A9nh)
+
+- Thay đổi mật khẩu cho tài khoản `admin`
+
 <img src="../../../Images/Pfsense/Lab/23.png">
+
+- Reload để cập nhật lại `Pfsense`
+
 <img src="../../../Images/Pfsense/Lab/24.png">
+
+- Hoàn thành thiết lập ban đầu:
+
 <img src="../../../Images/Pfsense/Lab/25.png">
+
+- Giao diện màn hình Dashboard của Pfsense:
+
 <img src="../../../Images/Pfsense/Lab/26.png">
+
+### 2. Tắt Hardware Checksum Offloading
+
+- Truy cập `System` > `Advanced`
 <img src="../../../Images/Pfsense/Lab/27.png">
+
+- Chọn `Networking` và kéo màn hình xuống phần `Network Interfaces` và `tick` chọn `Hardware Checksum Offloading` rồi bấm `save`:
+
 <img src="../../../Images/Pfsense/Lab/28.png">
+
 <img src="../../../Images/Pfsense/Lab/29.png">
 
+### 3. Bổ sung Rule Firewall cho phép kết nối giao diện Pfsense qua IP Public
 
+- Cho phép kết nối qua HTTP và HTTPS: `Firewall` > `Rules` > `WAN` chọn `Add`:
 
+<img src="../../../Images/Pfsense/Lab/30.png">
 
+  - kéo xuống mục `Destination` và câu hình chọn `HTTP (80)` và lưu lại:
+
+<img src="../../../Images/Pfsense/Lab/31.png">
+
+  - Cấu hình tương tự đối với `HTTPS (443)`
+
+<img src="../../../Images/Pfsense/Lab/32.png">
+  
+  - Chọn `Apply Changes` để lưu các thiết lập:
+
+<img src="../../../Images/Pfsense/Lab/33.png">
+
+<img src="../../../Images/Pfsense/Lab/34.png">
+
+  - Chuyển kết nối dashboard mặc định Pfsense tới HTTPS:
+
+<img src="../../../Images/Pfsense/Lab/35.png">
+
+<img src="../../../Images/Pfsense/Lab/36.png">
+
+### 4. Enable card mạng LAN
+
+<img src="../../../Images/Pfsense/Lab/37.png">
+
+- Add card mạng `vtnet1`
+
+<img src="../../../Images/Pfsense/Lab/38.png">
+
+<img src="../../../Images/Pfsense/Lab/39.png">
+
+<img src="../../../Images/Pfsense/Lab/40.png">
+
+  - Chọn `save` rồi chọn `Apply Change` để lưu cấu hình:
+
+<img src="../../../Images/Pfsense/Lab/41.png">
+
+  - Kiểm tra nhận 2 IP ở màn hình `Dashboard`
+
+<img src="../../../Images/Pfsense/Lab/42.png">
+
+### --- Hoàn thành Setup PfSense ---
