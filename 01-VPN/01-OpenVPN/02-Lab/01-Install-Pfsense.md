@@ -40,8 +40,11 @@ Bước này ta chọn cấu hình cho `vtnet0`
 <img src="../../../Images/Pfsense/Lab/9.png">
 
 Bỏ qua bước cấu hình cho vtnet1 
+
 <img src="../../../Images/Pfsense/Lab/10.png">
+
 <img src="../../../Images/Pfsense/Lab/11.png">
+
 <img src="../../../Images/Pfsense/Lab/12.png">
 <img src="../../../Images/Pfsense/Lab/13.png">
 
