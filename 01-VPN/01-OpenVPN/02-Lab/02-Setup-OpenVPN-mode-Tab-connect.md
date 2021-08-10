@@ -30,3 +30,44 @@
 - Điền đầy đủ thông tin ở mục `Internal Certificate Authority` và bấm `save`
 
 <img src="../../../Images/Pfsense/Lab/45.png">
+
+- Kết quả:
+
+<img src="../../../Images/Pfsense/Lab/46.png">
+
+#### Bươc 3: tạo Certificate : ` Certificate ` > ` add `
+<img src="../../../Images/Pfsense/Lab/47.png">
+
+- Tại mục: `Add/Sign a New Certificate`
+  - `Method`: Create an internal Certificate
+  - `Descriptive name`: ca-serer
+- Tại mục: `Certificate Attributes`
+  - `Certificate Type`: Server Certificate
+- Sau đó bấm `save`:
+
+<img src="../../../Images/Pfsense/Lab/50.png">
+
+<img src="../../../Images/Pfsense/Lab/49.png">
+
+<img src="../../../Images/Pfsense/Lab/51.png">
+
+
+## Phần II. Tạo User Client
+
+#### Add new user cho OpenVPN
+### Bước 1: Add new user
+- Truy cập theo đường dẫn: `System` > `User Manager`
+
+<img src="../../../Images/Pfsense/Lab/52.png">
+
+- chọn `add` để thêm user:
+
+<img src="../../../Images/Pfsense/Lab/53.png">
+
+### Bước 2: điền thông tin user:
+
+<img src="../../../Images/Pfsense/Lab/54.png">
+
+<img src="../../../Images/Pfsense/Lab/55.png">
+
+<img src="../../../Images/Pfsense/Lab/56.png">
