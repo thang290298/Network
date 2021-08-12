@@ -159,20 +159,143 @@
 
 <img src="../../../Images/Pfsense/Lab/73.png">
 
+### 2. Cấu hình Bridge VPN
+
+#### Bước 1:  Chọn `Interfaces` > `Assignments`
+
 <img src="../../../Images/Pfsense/Lab/74.png">
+
+#### Bước 2:  Chọn `Bridges` -> `add`
+
 <img src="../../../Images/Pfsense/Lab/75.png">
+- Tại `Member Interfaces` chọn `LAN` và `WAN` sau đó `Save`
+
 <img src="../../../Images/Pfsense/Lab/76.png">
+
+- Kết quả: 
 <img src="../../../Images/Pfsense/Lab/77.png">
+
+## Phần VI. Cấu hình Firewall Rule
+### 1. Cấu hình Rule cho WAN
+#### Bước 1: Chọn `Firewall > Rules`
 <img src="../../../Images/Pfsense/Lab/78.png">
+
+#### Bước 2: Chọn `WAN` rồi `add`
 <img src="../../../Images/Pfsense/Lab/79.png">
+
+#### Bước 3: Tạo mới Rule cho `WAN`
+- Điền thông tin vào mục: `Edit Firewall Rule`
+  - Action: `Pass`
+  - Interface: `WAN`
+  - Address Family: `IPv4`
+  - Protocol: `UDP`
+
 <img src="../../../Images/Pfsense/Lab/80.png">
+
+- Ở mục: `Destination`
+  - Destination: `WAN ADDRESS`
+  - Destination Port Range: `From OpenVPN (1194) to (OpenVPN 1194)`
+  - Bấm `Save` ở cuối trang
 <img src="../../../Images/Pfsense/Lab/81.png">
+
+  - `Apply Changes` để lưu cấu hình:
+
 <img src="../../../Images/Pfsense/Lab/82.png">
+
+### 2. Cấu hình Rule cho LAN
+#### Bước 1: Chọn `LAN` tiếp tục chọn `add`
+
 <img src="../../../Images/Pfsense/Lab/83.png">
+
+#### Bước 2: Tạo mới rule cho LAN
+Điền thông tin mục `Edit firewall Rule` sau đó bấm `Save` và `Apply change` để lưu cấu hình
+  - Action: `Pass`
+  - Interface: `LAN`
+  - Address Family: `IPv4`
+  - Protocol: `Any`
+
 <img src="../../../Images/Pfsense/Lab/84.png">
+
+- Kết quả:
+
 <img src="../../../Images/Pfsense/Lab/85.png">
+
+### 3: Tạo mới rule cho VPN
+#### Bước 1: Chọn `VPN` tiếp tục chọn `add`
 <img src="../../../Images/Pfsense/Lab/86.png">
+
+Điền thông tin mục `Edit firewall Rule` sau đó bấm `Save` và `Apply change` để lưu cấu hình
+  - Action: `Pass`
+  - Interface: `VPN`
+  - Address Family: `IPv4`
+  - Protocol: `Any`
+
 <img src="../../../Images/Pfsense/Lab/87.png">
+
+- Kết quả:
+
 <img src="../../../Images/Pfsense/Lab/88.png">
+
+## Phần VII. Kết nối VPN Client
+### 1. Chọn `VPN > OpenVPN`
+
 <img src="../../../Images/Pfsense/Lab/89.png">
+
+### 2. Chọn `Client Export` và kéo xuống phần `OpenVPN Clients`
+- tiến hành Download các bản cài tương ứng:
+  - `Inline Configurations`: Sử dụng cho các nền tảng mobile
+  - `Bundled Configurations`: FIle cấu hình Connect openVPN đối với các thiết bị đã cài đặt OpenVPN
+  - `Current Windows Installers`: Cài đặt mới trên windows
+  - `Legacy Windows Installers`: Bộ cài đối  với các phiên bản windowns chỉ định
+  - `Viscosity`: Sử dụng cho khách hàng thương mại
+
+- Ở đây chúng ta cài mới nên sẽ sử dụng bẳn `Current Windows Installers`
+
 <img src="../../../Images/Pfsense/Lab/90.png">
+
+### 2. Cài đặt OpenVPN
+- Sau khi `Download` file về ta tiến hành chạy cài đặt 
+
+### 3. Tạo Tap Network để kết nối
+- truy cập đường dẫn :`C:\ProgramData\Microsoft\Windows\Start Menu\Programs\OpenVPN\Utilities` chạy file tạo Tab
+
+<img src="../../../Images/Pfsense/Lab/91.png">
+Kết quả:
+<img src="../../../Images/Pfsense/Lab/92.png">
+
+- Cấu hình lại file `config`:`C:\Program Files\OpenVPN\config`
+
+```
+dev tap
+dev-node VPN-VLAN13
+nobind
+persist-tun
+persist-key
+ncp-ciphers AES-256-CBC
+cipher AES-256-CBC
+auth SHA256
+tls-client
+client
+resolv-retry infinite
+remote 172.16.4.29 1194 udp
+verify-x509-name "NH" name
+auth-user-pass
+pkcs12 pfSense01-UDP4-1194-user.p12
+tls-auth pfSense01-UDP4-1194-user-tls.key 1
+remote-cert-tls server
+explicit-exit-notify
+redirect-gateway def1
+```
+- truy cập vào tài khoản `user` đã cấu hình cài đặt:
+<img src="../../../Images/Pfsense/Lab/93.png">
+
+- kết quả:
+<img src="../../../Images/Pfsense/Lab/94.png">
+
+<img src="../../../Images/Pfsense/Lab/95.png">
+
+- Ping kiểm tra:
+
+<img src="../../../Images/Pfsense/Lab/96.png">
+
+<p align="center">---- Hoàn thành setup và kết nối OpenVPN Client - Server ----</p>
