@@ -177,24 +177,63 @@ Thực hiện trên node `HA-Pfsense02`
 
 <img src="../../../Images/Pfsense/Lab/122.png">
 
-<img src="../../../Images/Pfsense/Lab/123.png">
+
+## Phần IV. Cấu hình lại bảng NAT cho pfSense
+
+Thực hiện trên node `HA-Pfsense01`
+
+### Bước 1: Thay đổi chế độ NAT
+
+chọn `Firewall` > `NAT` > `Outbound`
 <img src="../../../Images/Pfsense/Lab/124.png">
+
+- Chọn `Manual Outbound NAT rule generation (AON - Advanced Outbound NAT)` > Chọn `Save`
+
 <img src="../../../Images/Pfsense/Lab/125.png">
+
+- Chọn `Apply Changes` để áp dụng thay đổi cấu hình
+
 <img src="../../../Images/Pfsense/Lab/126.png">
+
 <img src="../../../Images/Pfsense/Lab/127.png">
+
+### Bước 2: Điều chỉnh Traffic sẽ đi qua IP VIP
+
+Tiến hành cấu hình lại để Traffic sẽ đi qua IP VIP WAN thay vì sử dụng IP Public. Tiến hành cấu hình trên các interface LAN
+- Cấu hình rule `Auto created rule for ISAKMP - LAN to WAN` : 
+  - Cấu hình lại `Translation` > Address thành VIP PUBLIC `172.16.4.99`
+  - Bấm `Save` sau đó chọn `Apply Changes` để lưu và ấp dụng thay đổi
+
 <img src="../../../Images/Pfsense/Lab/128.png">
+
 <img src="../../../Images/Pfsense/Lab/129.png">
+
 <img src="../../../Images/Pfsense/Lab/130.png">
+
+- Cấu hình rule `Auto created rule - LAN to WAN` (Cấu hình tương tự bên trên)
+  - Cấu hình lại `Translation` > Address thành VIP PUBLIC `172.16.4.99`
+  - Bấm `Save` sau đó chọn `Apply Changes` để lưu và ấp dụng thay đổi
+
 <img src="../../../Images/Pfsense/Lab/131.png">
+
 <img src="../../../Images/Pfsense/Lab/132.png">
-<img src="../../../Images/Pfsense/Lab/133.png">
+
 <img src="../../../Images/Pfsense/Lab/134.png">
+
+## Phần V. Kiểm tra 
+### Truy cập tới Pfsense thông qua VIP
+
+- Truy cập pfSense thông qua IP VIP http://172.16.4.99/
+
+<img src="../../../Images/Pfsense/Lab/133.png">
+
+- Thực hiện tắt Node 1 `HA-Pfsense01` và vẫn truy cập qua IP VIP thành công
+
 <img src="../../../Images/Pfsense/Lab/135.png">
+
+- Kiểm tra Kết nối `VPN` từ `client` đến Node `HA-Pfsense02` (IP: 172.16.4.30) khi đã tắt node `HA-Pfsense01` thành công
+
+
 <img src="../../../Images/Pfsense/Lab/136.png">
-<img src="../../../Images/Pfsense/Lab/137.png">
-<img src="../../../Images/Pfsense/Lab/138.png">
-<img src="../../../Images/Pfsense/Lab/139.png">
-<img src="../../../Images/Pfsense/Lab/140.png">
-<img src="../../../Images/Pfsense/Lab/141.png">
-<img src="../../../Images/Pfsense/Lab/142.png">
-<img src="../../../Images/Pfsense/Lab/143.png">
+
+<p align="center">---- Hoàn thành Cấu Hình HA-Pfsense ----</p>
