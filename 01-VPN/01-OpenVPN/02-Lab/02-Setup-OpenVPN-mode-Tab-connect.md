@@ -9,6 +9,9 @@
 
 Đường LAN là đường quản trị, các Server sẽ được SSH qua dảy mạng LAN. Dải IP LAN 10.10.13.x
 ```
+## Mô Hình 
+
+<img src="../../../Images/Pfsense/Lab/97.png">
 
 ## Phần I:  Thiết lập Certificate
 
