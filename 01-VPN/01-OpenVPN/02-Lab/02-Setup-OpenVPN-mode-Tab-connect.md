@@ -128,7 +128,7 @@
   
 <img src="../../../Images/Pfsense/Lab/65.png">
 
-- `Custom Options` thêm cấu hình: `push "route 10.10.40.0 255.255.255.0"`
+- `Custom Options` thêm cấu hình: `push "route 10.10.13.0 255.255.255.0"`
 
 <img src="../../../Images/Pfsense/Lab/66.png">
 
