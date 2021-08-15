@@ -18,11 +18,10 @@
 
 - 1 máy chủ `Pfsense03`:
   - `vtnet0`: 172.16.2.96 - WAN IP Public
-  - `vtnet1`: 10.10.12.96 - VLAN12 IP Private
-- 1 Client centos7: IP 10.10.12.245
+  - `vtnet1`: 192.168.89.96 - VLAN89 IP Private
+- 1 Client centos7: IP 192.168.89.230
 
 <img src="../../../Images/Pfsense/Lab/139.png">
-
 
 ## Phần II. Cấu hình VPN IPSec tại Site 1
 
@@ -72,9 +71,8 @@ Sau đó tiến hành `Save` và `Apply changes` lại.
   - `Mode`: `Tunnel IPv4`
   - `Local Network`: Network - `10.10.13.0/24` - Dải địa chỉ VLAN13 tại Site 1
   - `NAT/BINAT translation`: None
-  - `Remote Network`: Network - `10.10.12.0/24` - Dải địa chỉ VLAN12 tại Site 2
-  - `Description`: VLAN13 to VLAN12
-
+  - `Remote Network`: Network - `192.168.89.0/24` - Dải địa chỉ VLAN89 tại Site 2
+  - `Description`: VLAN13 to VLAN89
 
 <img src="../../../Images/Pfsense/Lab/147.png">
 
@@ -85,7 +83,7 @@ Sau đó tiến hành `Save` và `Apply changes` lại.
 - Tại mục `Expiration and Replacement`
   - `Lifetime`: `3600`
 - Tại mục `Advanced Configuration`
-  - `Automatically ping host`: 10.10.12.96 IP VLAN12 tại Site 2
+  - `Automatically ping host`: 192.168.89.100 IP VLAN89 tại Site 2
 
 <img src="../../../Images/Pfsense/Lab/148.png">
 <img src="../../../Images/Pfsense/Lab/149.png">
@@ -97,8 +95,6 @@ Sau đó tiến hành `Save` và `Apply changes` lại.
 ### Bước 2: Cấu hình Firewall cho VPN Site to Site tại interface WAN
 
 - Chọn `Firewall > Rules`
-
-<img src="../../../Images/Pfsense/Lab/151.png">
 
 <img src="../../../Images/Pfsense/Lab/152.png">
 
@@ -138,7 +134,7 @@ Tiếp tục Add thêm Rule với config:
   - `Address Family`: `IPv4`
   - `Protocol`: `Any`
 - Tại mục `Source`:
-  - `Source - Network - 10.10.12.0/24` - Cho phép dải VLAN41 được phép kết nối qua VPN IPsec
+  - `Source - Network - 192.168.89.0/24` - Cho phép dải VLAN41 được phép kết nối qua VPN IPsec
 - Chọn `Save` và `Apply changes`
 
 <img src="../../../Images/Pfsense/Lab/156.png">
@@ -174,6 +170,12 @@ Thực hiện trên Node pfsense02 tại Site 2 ( Thực hiện cấu hình tư�
 ### Site 1: Pfsense01
 
 <img src="../../../Images/Pfsense/Lab/162.png">
+
+- Ping từ client `Site 1` đến `Site 2`
+  - `Client IP: 10.10.13.245` đến `Pfsense03 IP: 192.168.89.96`
+
+<img src="../../../Images/Pfsense/Lab/162.png">
+
 
 ### Site 2: Pfsense03
 
