@@ -171,12 +171,11 @@ Thực hiện trên Node pfsense02 tại Site 2 ( Thực hiện cấu hình tư�
 
 <img src="../../../Images/Pfsense/Lab/162.png">
 
-- Ping từ client `Site 1` đến `Site 2`
-  - `Client IP: 10.10.13.245` đến `Pfsense03 IP: 192.168.89.96`
-
-<img src="../../../Images/Pfsense/Lab/162.png">
-
-
 ### Site 2: Pfsense03
 
 <img src="../../../Images/Pfsense/Lab/163.png">
+
+
+### Ping từ client `Site 1` đến `Site 2`
+
+<img src="../../../Images/Pfsense/Lab/164.png">
