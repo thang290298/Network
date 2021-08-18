@@ -16,7 +16,7 @@
 <dev align="center"> <img src="../../Images/Pfsense/Lab/137.png"></dev>
 
 
-<h3 align="center"> Mô hình Pfsense Site to Site mô Hình HA </h3>
+<h3 align="center"> Mô hình Pfsense Site to Site HA </h3>
 
 
 <dev align="center"> <img src="../../Images/Pfsense/Lab/165.png"></dev>
